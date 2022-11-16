@@ -1,3 +1,9 @@
+import BridgeEx1.JavaQuestions;
+import BridgeEx1.QuestionFormat;
+import BridgeEx2.Circle;
+import BridgeEx2.GreenCircle;
+import BridgeEx2.RedCircle;
+import BridgeEx2.Shape;
 import CompositeEx1.Accountant;
 import CompositeEx1.BankManager;
 import CompositeEx1.Cashier;
@@ -10,10 +16,14 @@ import Decorator_food.ChineeseFood;
 import Decorator_food.Food;
 import Decorator_food.NonVeganFood;
 import Decorator_food.VeganFood;
-import Decorator_shape.Circle;
+
 import Decorator_shape.Rectangle;
 import Decorator_shape.RedShapeDecorator;
-import Decorator_shape.Shape;
+
+import FlyWeightEx1.Player;
+import FlyWeightEx1.PlayerFactory;
+import FlyWeightEx2.Car;
+import FlyWeightEx2.CarFactory;
 import ProxyEx1.OfficeInternetAccess;
 import ProxyEx1.ProxyInternetAccess;
 import ProxyEx2.Image;
@@ -22,10 +32,16 @@ import ProxyEx2.ProxyImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Random;
+
 
 public class StructuralMain {
+    static CarFactory carFactory = new CarFactory();
     private static int choice;
-
+    private static String[] playerType =
+            {"Terrorist", "CounterTerrorist"};
+    private static String[] weapons =
+            {"AK-47", "Maverick", "Gut Knife", "Desert Eagle"};
     public static void main(String[] args) throws NumberFormatException, IOException {
         System.out.println("Hello world");
         /*
@@ -62,13 +78,13 @@ public class StructuralMain {
         shapeMaker.drawRectangle();
         shapeMaker.drawSquare();
         */
-
         /*
+
         //Proxy 1 Internet Access Example
         OfficeInternetAccess access = new ProxyInternetAccess("Nurcan Alkış");
         access.grantInternetAccess();
+*/
 
-         */
 
         /*
         //Proxy 2 example image
@@ -80,8 +96,8 @@ public class StructuralMain {
 
         //image will not be loaded from disk
         image.display();
-        */
 
+        */
 
         /*
         //Composite Example Employee
@@ -97,8 +113,8 @@ public class StructuralMain {
 
          */
 
+/*
 
-        /*
 
         //Composite example menu
         MenuComponent pancakeHouseMenu =
@@ -129,11 +145,11 @@ public class StructuralMain {
         Waitress waitress = new Waitress(allMenus);
         waitress.printMenu();
 
-         */
+*/
 
 
 
-        /*
+/*
         //Decorator Shape
         // Creating an object of Shape interface
         // inside the main() method
@@ -167,11 +183,8 @@ public class StructuralMain {
         // Call 3
         redRectangle.draw();
 
-
-        */
-
-
-        /*
+ */
+/*
         //Decorator food
         do{
             System.out.print("========= Food Menu ============ \n");
@@ -212,11 +225,81 @@ public class StructuralMain {
 
         }while(choice!=4);
 
-         */
+ */
 
+    //Bridge Example 1: questions
+        QuestionFormat questions = new QuestionFormat("Java Programming Language");
+        questions.q = new JavaQuestions();
+        questions.delete("what is class?");
+        questions.display();
+        questions.newOne("What is inheritance? ");
+
+        questions.newOne("How many types of inheritance are there in java?");
+        questions.displayAll();
+
+
+        /*
+        //Bridge Example 2: drawAPI
+
+        Shape redCircle = new Circle(100,100, 10, new RedCircle());
+        Shape greenCircle = new Circle(100,100, 10, new GreenCircle());
+
+        redCircle.draw();
+        greenCircle.draw();
+
+         */
+/*
+        //FlyWeight CounterStrike Example
+        for (int i = 0; i < 10; i++)
+        {
+            //getPlayer() is called simply using the class name since the method is a static one
+            Player p = PlayerFactory.getPlayer(getRandPlayerType());
+
+            //Assign a weapon chosen randomly uniformly from the weapon array
+            p.assignWeapon(getRandWeapon());
+
+            // Send this player on a mission
+            p.mission();
+        }
+        */
+/*
+    //FlyWeight Example 2 Car
+        for(int x = 1; x < 5; x++) {
+            Car car1 = carFactory.getCar("Chevrolet");
+            System.out.println("A Chevrolet car was drawn in position (x, y)=("+x+",10)");
+        }
+
+        for(int x = 1; x < 5; x++) {
+            Car car1 = carFactory.getCar("BMW");
+            System.out.println("A BMW car was drawn in position (x, y)=("+x+",10)");
+        }
 
 
 
     }
+
+ */
+
+    public static String getRandPlayerType()
+    {
+        Random r = new Random();
+
+        // Will return an integer between [0,2)
+        int randInt = r.nextInt(playerType.length);
+
+        // return the player stored at index 'randInt'
+        return playerType[randInt];
+    }
+    public static String getRandWeapon()
+    {
+        Random r = new Random();
+
+        // Will return an integer between [0,4)
+        int randInt = r.nextInt(weapons.length);
+
+        // Return the weapon stored at index 'randInt'
+        return weapons[randInt];
+    }
+
 }
 

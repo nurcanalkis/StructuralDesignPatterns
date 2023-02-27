@@ -7,7 +7,7 @@ public class JavaQuestions implements Question{
     private List<String> questions = new ArrayList<String>();
     private int current = 0;
     public JavaQuestions(){
-        questions.add("What is class? ");
+        questions.add("What is class?");
         questions.add("What is interface? ");
         questions.add("What is abstraction? ");
         questions.add("How multiple polymorphism is achieved in java? ");

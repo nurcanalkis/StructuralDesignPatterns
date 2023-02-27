@@ -1,5 +1,5 @@
 package BridgeEx2;
-
+// concrete class implementing the Shape interface.
 public class Circle extends Shape{
     private int x, y, radius;
 

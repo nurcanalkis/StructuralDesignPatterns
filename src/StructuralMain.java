@@ -42,6 +42,7 @@ public class StructuralMain {
             {"Terrorist", "CounterTerrorist"};
     private static String[] weapons =
             {"AK-47", "Maverick", "Gut Knife", "Desert Eagle"};
+
     public static void main(String[] args) throws NumberFormatException, IOException {
         System.out.println("Hello world");
         /*
@@ -226,19 +227,20 @@ public class StructuralMain {
         }while(choice!=4);
 
  */
+/*
+        //Bridge Example 1: questions
+        QuestionFormat test = new QuestionFormat("Java Programming Language");
+        test.q = new JavaQuestions();
+        test.delete("What is class?");
+        test.display();
+        test.newOne("What is inheritance? ");
 
-    //Bridge Example 1: questions
-        QuestionFormat questions = new QuestionFormat("Java Programming Language");
-        questions.q = new JavaQuestions();
-        questions.delete("what is class?");
-        questions.display();
-        questions.newOne("What is inheritance? ");
-
-        questions.newOne("How many types of inheritance are there in java?");
-        questions.displayAll();
+        test.newOne("How many types of inheritance are there in java?");
+        test.displayAll();
+*/
 
 
-        /*
+/*
         //Bridge Example 2: drawAPI
 
         Shape redCircle = new Circle(100,100, 10, new RedCircle());
@@ -247,11 +249,15 @@ public class StructuralMain {
         redCircle.draw();
         greenCircle.draw();
 
-         */
+ */
+
+
+
 /*
+
+
         //FlyWeight CounterStrike Example
-        for (int i = 0; i < 10; i++)
-        {
+        for (int i = 0; i < 10; i++) {
             //getPlayer() is called simply using the class name since the method is a static one
             Player p = PlayerFactory.getPlayer(getRandPlayerType());
 
@@ -261,8 +267,12 @@ public class StructuralMain {
             // Send this player on a mission
             p.mission();
         }
-        */
-/*
+
+ */
+
+
+
+
     //FlyWeight Example 2 Car
         for(int x = 1; x < 5; x++) {
             Car car1 = carFactory.getCar("Chevrolet");
@@ -278,10 +288,9 @@ public class StructuralMain {
 
     }
 
- */
 
-    public static String getRandPlayerType()
-    {
+
+    public static String getRandPlayerType() {
         Random r = new Random();
 
         // Will return an integer between [0,2)
@@ -290,8 +299,8 @@ public class StructuralMain {
         // return the player stored at index 'randInt'
         return playerType[randInt];
     }
-    public static String getRandWeapon()
-    {
+
+    public static String getRandWeapon() {
         Random r = new Random();
 
         // Will return an integer between [0,4)
@@ -300,6 +309,6 @@ public class StructuralMain {
         // Return the weapon stored at index 'randInt'
         return weapons[randInt];
     }
-
 }
+
 
